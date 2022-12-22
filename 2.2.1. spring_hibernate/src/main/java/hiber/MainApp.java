@@ -18,16 +18,16 @@ public class MainApp {
 
       User user1 = new User("Oleg","Smirnov","some1@email.ru");
       Car car1 = new Car("Volvo", 12948);
-      user1.setCar(car1);
-      userService.add(user1);
+
+      userService.add(user1,car1);
       User user2 = new User("Andrey","Golubev","some2@email.ru");
       Car car2 = new Car("Mersedes", 981237);
-      user2.setCar(car2);
-      userService.add(user2);
+
+      userService.add(user2,car2);
       User user3 = new User("Anton","Petrov","some3@email.ru");
       Car car3 = new Car("Moskvich", 90892348);
-      user3.setCar(car3);
-      userService.add(user3);
+
+      userService.add(user3,car3);
 
       userService.getUserById(1);
       userService.getUserById(2);

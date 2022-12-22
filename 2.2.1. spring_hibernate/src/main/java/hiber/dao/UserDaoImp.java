@@ -16,7 +16,9 @@ public class UserDaoImp implements UserDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public void add(User user) {
+    public void add(User user,Car car) {
+        sessionFactory.getCurrentSession().save(car);
+        user.setCar(car);
         sessionFactory.getCurrentSession().save(user);
     }
 
@@ -29,9 +31,9 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public User getUser(String model, int series) {
-        TypedQuery<User> q = sessionFactory.getCurrentSession().createQuery("select u from User u where u.car.model=:f and u.car.series=:s", User.class);
-        q.setParameter("f", model);
-        q.setParameter("s", series);
+        TypedQuery<User> q = sessionFactory.getCurrentSession().createQuery("select u from User u where u.car.model=:model and u.car.series=:series", User.class);
+        q.setParameter("model", model);
+        q.setParameter("series", series);
         return q.getSingleResult();
     }
 
